@@ -1,0 +1,11 @@
+# Selective Forwarding Unit (SFU)
+
+## Background
+There are several architectures for delivering information using WebRTC, each suited to specific use cases. One of the most straightforward architectures is the peer-to-peer (P2P) model, where users connect directly to each other in a one-to-one fashion. This approach is known as Mesh Topology. In this setup, if we represent each user as a node and each connection as an edge, a graph with n nodes would result in each node having n-1 edges. This means every user connects directly to every other user, with no intermediary. While this is cost-effective in terms of infrastructure, as all the computing and forwarding happens on the users' devices, it heavily impacts the users' bandwidth. This can become a significant drawback, especially in bandwidth-sensitive applications like online gaming (e.g., League of Legends), where high network efficiency is crucial.
+
+An alternative to the mesh topology is to use a Selective Forwarding Unit (SFU). With an SFU, the client sends one media stream to a server, which then forwards that stream to other participants. The SFU uses the ICE (Interactive Connectivity Establishment) and SDP (Session Description Protocol) information, typically obtained through a signaling server, to establish and manage these connections. In a scenario with 5 users, for example, the client would only need to upload one stream to the server and receive four streams back, significantly reducing the client's upload bandwidth requirements, as opposed to sending a separate stream to each participant in a mesh topology.
+
+Basically, instead of having a client forward 4 streams to 4 users, the client will send 1 stream to an SFU which will forward that data to the other users on behalf of the client
+
+# Implementation
+There are some good libaries for Golang that exist so we can handle WebRTC connections pretty easily. Articles that I have read described making one of these as "pretty easy and would only take a weekend" (we'll see about that) for simpler implemenations, but the sky is the limit for optimizations.
