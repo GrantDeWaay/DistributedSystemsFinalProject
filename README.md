@@ -7,3 +7,5 @@ We want to build a 5-peer voice chat application that League of Legends players 
 This application will be built by utilizing WebRTC, a distributed Peer-to-peer protocol designed by Google that enables users (in this case, players) to communicate over a web browser without exposing their network information to strangers.
 
 To build the web application, we will use the React library to build the user interface and logic, and a yet-to-be-determined language will be used for the simple Signal server and SFU to forward the media channels to clients, reducing the latency.
+
+Check the README.md in each folder for more information about each component
